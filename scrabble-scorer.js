@@ -76,13 +76,15 @@ function scrabbleScorer(word){
    }
    return points;
 }
-
+// an array of objects, where each object represents a scoring algorithm
 const scoringAlgorithms = [
    {name: "Simple Score", description: "Each letter is worth 1 point.", scorerFunction: simpleScorer}, 
    {name: "Bonus Vowels", description: "Vowels are 3 pts, consonants are 1 pt.", scorerFunction: vowelBonusScorer}, 
    {name: "Scrabble", description: "The traditional scoring algorithm.", scorerFunction: scrabbleScorer}]; //oldScrabbleScorer
 
+   // function to ask user to select a scoring algorithm
 function scorerPrompt(scoringAlgorithms) {
+   // ask user to enter a number that corresponds to the desired scoring algorithm
    let num = Number(input.question(
       `   
       Which scoring algorithm would you like to use?
@@ -92,16 +94,24 @@ function scorerPrompt(scoringAlgorithms) {
       2 - Scrabble: Uses scrabble point system
       Enter 0, 1, or 2: `
    ));
+   // return the selected scoring algorithm object from the scoringAlgorithms array
    return scoringAlgorithms[num]
 }
 
 
 
 function runProgram() {
+   // get the user's input (word to be scored)
    let word = initialPrompt();
-   let scoringObject = scorerPrompt(scoringAlgorithms);
-   console.log(`Score for '${word}': ${scoringObject.scorerFunction(word)}`)
-   
+
+   // ask the user to select a scoring algorithm
+   let scoringAlgorithm = scorerPrompt(scoringAlgorithms);
+
+   // use the selected scoring algorithm to calculate the score 
+   let score = scoringAlgorithm.scorerFunction(word);
+
+   // this will display the score for the user's input
+console.log(`Score for '${word}': ${score}`);
 }
 
 // Don't write any code below this line //
