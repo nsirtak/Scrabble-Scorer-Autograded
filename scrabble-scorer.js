@@ -54,19 +54,17 @@ function simpleScorer(word){
 }
 
 function vowelBonusScorer(word) {
-   let vowels = "aeiou"
-   vowels = vowels.split("");
-   word = word.toLowerCase().split("");
    let points = 0;
-   for (let letter of word){
-      if (vowels.includes(letter)){
-         points += 3
-      } else {
-         points += 1
-      }
+   for (let i = 0; i < word.length; i++) {
+     let letter = word.toLowerCase()[i];
+     if (letter === 'a' || letter === 'e' || letter === 'i' || letter === 'o' || letter === 'u') {
+       points += 3;
+     } else {
+       points += 1;
+     }
    }
    return points;
-};
+ }
 
 function scrabbleScorer(word){
    word = word.toLowerCase().split("");
