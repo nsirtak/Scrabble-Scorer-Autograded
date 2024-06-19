@@ -35,8 +35,6 @@ function oldScrabbleScorer(word) {
 function initialPrompt() {
    console.log("Let's play some scrabble!");
    let word = input.question("Enter a word: ")
-   // console.log(oldScrabbleScorer(word));
-   // console.log(vowelBonusScorer(word))
    return word;
 };
 
@@ -62,8 +60,8 @@ function vowelBonusScorer(word) {
 function scrabbleScorer(word){
    word = word.toLowerCase().split("");
    let points = 0
-   for (letter of word){
-      points += newPointStructure[letter]
+   for (let i = 0; i < word.length; i++){
+      points += newPointStructure[word[i]]
    }
    return points;
 }
