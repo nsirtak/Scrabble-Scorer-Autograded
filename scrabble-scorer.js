@@ -83,21 +83,15 @@ const scoringAlgorithms = [
    {name: "Bonus Vowels", description: "Vowels are 3 pts, consonants are 1 pt.", scorerFunction: vowelBonusScorer}, 
    {name: "Scrabble", description: "The traditional scoring algorithm.", scorerFunction: scrabbleScorer}]; //oldScrabbleScorer
 
-   // function to ask user to select a scoring algorithm
-function scorerPrompt(scoringAlgorithms) {
-   // ask user to enter a number that corresponds to the desired scoring algorithm
-   let num = Number(input.question(
-      `   
-      Which scoring algorithm would you like to use?
-
-      0 - Simple: One point per character
-      1 - Vowel Bonus: Vowels are worth 3 points
-      2 - Scrabble: Uses scrabble point system
-      Enter 0, 1, or 2: `
-   ));
-   // return the selected scoring algorithm object from the scoringAlgorithms array
-   return scoringAlgorithms[num]
-}
+   // ask user to select a scoring algorithm
+   function scorerPrompt(scoringAlgorithms) {
+      console.log(`Which scoring algorithm would you like to use?\n`);
+      for (let i = 0; i < scoringAlgorithms.length; i++) {
+        console.log(`${i} - ${scoringAlgorithms[i].name}: ${scoringAlgorithms[i].description}`);
+      }
+      let num = input.question(`Enter a number (0, 1, or 2): `);
+      return scoringAlgorithms[num];
+    }
 
 function runProgram() {
    // get the user's input (word to be scored)
