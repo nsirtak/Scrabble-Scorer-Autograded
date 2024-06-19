@@ -94,18 +94,11 @@ const scoringAlgorithms = [
     }
 
 function runProgram() {
-   // get the user's input (word to be scored)
    let word = initialPrompt();
-
-   // ask the user to select a scoring algorithm
    let scoringAlgorithm = scorerPrompt(scoringAlgorithms);
-
-   // use the selected scoring algorithm to calculate the score 
    let score = scoringAlgorithm.scorerFunction(word);
-
-   // this will display the score for the user's input
-console.log(`Score for '${word}': ${score}`);
-}
+   console.log(`Score for '${word}': ${score}`);
+ }
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
