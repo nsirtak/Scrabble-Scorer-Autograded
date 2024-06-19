@@ -38,6 +38,17 @@ function initialPrompt() {
    return word;
 };
 
+function transform(oldPointStructure) {
+   let newPointStructure = {};
+   for (let point in oldPointStructure){
+      for (let letter of oldPointStructure[point])
+         newPointStructure[letter.toLowerCase()] = Number(point);
+   }
+   return newPointStructure;
+};
+
+let newPointStructure = transform(oldPointStructure);
+
 function simpleScorer(word){
    return word.length;
 }
@@ -84,16 +95,7 @@ function scorerPrompt(scoringAlgorithms) {
    return scoringAlgorithms[num]
 }
 
-function transform(oldPointStructure) {
-   let newPointStructure = {};
-   for (let point in oldPointStructure){
-      for (let letter of oldPointStructure[point])
-         newPointStructure[letter.toLowerCase()] = Number(point);
-   }
-   return newPointStructure;
-};
 
-let newPointStructure = transform(oldPointStructure);
 
 function runProgram() {
    let word = initialPrompt();
