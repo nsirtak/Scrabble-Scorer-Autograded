@@ -76,6 +76,7 @@ function scrabbleScorer(word){
    }
    return points;
 }
+
 // an array of objects, where each object represents a scoring algorithm
 const scoringAlgorithms = [
    {name: "Simple Score", description: "Each letter is worth 1 point.", scorerFunction: simpleScorer}, 
@@ -97,8 +98,6 @@ function scorerPrompt(scoringAlgorithms) {
    // return the selected scoring algorithm object from the scoringAlgorithms array
    return scoringAlgorithms[num]
 }
-
-
 
 function runProgram() {
    // get the user's input (word to be scored)
